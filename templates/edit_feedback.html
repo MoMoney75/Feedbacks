@@ -1,0 +1,28 @@
+<form action="/feedback/{{feedback.id}}/edit" , method="post">
+
+
+    {{form.hidden_tag()}}
+
+    {%for field in form
+    if field.widget.input_type != 'hidden' %}
+    <p>
+
+        {{field.label}}
+        {{field}}
+
+        {% for error in field.errors %}
+        {{error}}
+        {% endfor %}
+
+        {% endfor %}
+
+    </p>
+
+    {% for message in get_flashed_messages() %}
+
+    <p>{{message}}</p>
+
+    {% endfor %}
+
+    <button>Submit</button>
+</form>

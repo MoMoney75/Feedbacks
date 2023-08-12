@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All users</title>
+</head>
+
+<body>
+    <h1>Users</h1>
+
+    {% for user in users %}
+    <p>
+        {{user.username}}
+        {% if session['username'] == user.username %}
+
+
+    <form action="/users/{{user.username}}/delete" method="post">
+        <button>delete</button>
+    </form>
+
+
+    </p>
+
+
+
+
+    {% endif %}
+
+    {% endfor%}
+</body>
+
+</html>

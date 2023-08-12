@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{user.username}}</title>
+</head>
+
+<body>
+
+    {% if session['username'] == user.username %}
+    {% for message in get_flashed_messages() %}
+
+    <p>{{message}}</p>
+    {% endfor %}
+
+    <p>{{user.username}}</p>
+    <p>{{user.first_name}}</p>
+    <p>{{user.last_name}}</p>
+    <p>{{user.email}}</p>
+
+    <button>
+        <a href="/users/{{user.username}}/feedback/add">create new feedback</a>
+    </button>
+    <button>
+        <a href="/users/all">friends</a>
+    </button>
+
+    <button>
+        <a href="/feedbacks">all feedbacks</a>
+    </button>
+
+    <button>
+        <a href="/logout">logout</a>
+    </button>
+
+    {% else %}
+    <a href="/">Please log in or register to view this page!</a>
+
+
+
+
+    {% endif %}
+</body>
+
+</html>

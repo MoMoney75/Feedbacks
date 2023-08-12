@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All feedbacks</title>
+</head>
+
+<body>
+    {% for feedback in all_feedbacks%}
+    <div>
+        <h5>{{feedback.title}}</h5>
+        <p>{{feedback.content}}</p>
+
+        {% if session['username'] == feedback.user.username %}
+
+        <form action="/feedback/{{feedback.id}}/delete" method="post">
+            <button>delete</button>
+        </form>
+
+
+        <form action="/feedback/{{feedback.id}}/edit" method="post">
+            <button>edit</button>
+        </form>
+
+        {% endif %}
+
+
+    </div>
+
+
+    {% endfor %}
+
+
+    <button>
+        <a href="/logout">logout</a>
+    </button>
+
+
+
+</body>
+
+</html>
